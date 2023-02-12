@@ -4,26 +4,35 @@
     inter-task shared variable, and a queue. The tasks don't really @b do
     anything; the example just shows how these elements are created and run.
 
+    This file contains the code to succesfully run 2 motors with motor control 
+    according to lab3 of ME-405. 
+        * the motors run a step response and dump that data to the terminal in
+            which it can be copied to a csv (this can be replaced by a uart or other connection 
+            but is simple this way)
+        * only the data from the step response is printed to the terminal once 
+            the rest of the data from the run is not printed to the terminal
+
+        
+
 @author Adam Westfall
 @author Jason Davis
 @author Conor Fraser
 @copyright                          Creative Commons CC BY: Please visit https://creativecommons.org/licenses/by/4.0/ to learn more
 @date                               January 9, 2023
 TODO: 
-    * Test prevous functionality on board
-    * Create Task Diagram to run the program
-    * Implement task diagram to run motors 
+    * Test prevous functionality on boards
+    * Implement motor control for one motor 
         * cotask.py should have timing at around 10ms
-        * make sure run() method in controllor class only doesone calc each time
-    * Run the motor with a flywheel
-        * print results and plot step response like before
-        * find the slowest rate at which the controllers preformance is noticably worse
-        * Record the slowest rate at which the performance is not significantly worse than when running the controller at a fast rate
-        * choose a good run rate for the motor control task - it should be a bit faster than the slowest rate which works for a factor of safety
-        * Save copies of the step response plots for the slowest rate at which the response is good and for a rate at which the response isn’t as good.
+        * make sure run() method in controllor class only does one calc each time
+        * Run the motor with a flywheel
+            * print results and plot step response like before
+            * find the slowest rate at which the controllers preformance is noticably worse
+            * Record the slowest rate at which the performance is not significantly worse than when running the controller at a fast rate
+            * choose a good run rate for the motor control task - it should be a bit faster than the slowest rate which works for a factor of safety
+            * Save copies of the step response plots for the slowest rate at which the response is good and for a rate at which the response isn't as good.
     * make two tasks which run two motors under closed-loop control at the same time
         * write a test program which moves your motors simultaneously through different distances and holds them at the desired positions
-        
+
 """
 
 import gc
@@ -66,11 +75,35 @@ def task2_fun(shares):
 
         yield 0
 
+def our_task1_fun(Kp: float, position: int):
+    """!
+    Task that runs a motor driver and dumps the data to the terminal
+    @param Kp a floating point value for the proportional coefficient
+    @param position an integer value for the position the motor is to go to (can be -/+)
+    """
+    pass
+
+def our_task2_fun(Kp: float, position: int):
+    """!
+    Task that runs another motor driver and dumps the data to the terminal 
+    @param Kp a floating point value for the proportional coefficient
+    @param position an integer value for the position the motor is to go to (can be -/+)
+    """
+    pass
+
+
+
 
 # This code creates a share, a queue, and two tasks, then starts the tasks. The
 # tasks run until somebody presses ENTER, at which time the scheduler stops and
 # printouts show diagnostic information about the tasks, share, and queue.
 if __name__ == "__main__":
+    """
+    TODO:
+        * implement the two functions with cotsk.py shouldnt be any task_share stuff
+        
+    
+    """
     print("Testing ME405 stuff in cotask.py and task_share.py\r\n"
           "Press Ctrl-C to stop and show diagnostics.")
 
