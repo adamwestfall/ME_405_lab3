@@ -1,13 +1,29 @@
 """!
-@file basic_tasks.py
+@file main.py
     This file contains a demonstration program that runs some tasks, an
     inter-task shared variable, and a queue. The tasks don't really @b do
     anything; the example just shows how these elements are created and run.
 
-@author JR Ridgely
-@date   2021-Dec-15 JRR Created from the remains of previous example
-@copyright (c) 2015-2021 by JR Ridgely and released under the GNU
-    Public License, Version 2. 
+@author Adam Westfall
+@author Jason Davis
+@author Conor Fraser
+@copyright                          Creative Commons CC BY: Please visit https://creativecommons.org/licenses/by/4.0/ to learn more
+@date                               January 9, 2023
+TODO: 
+    * Test prevous functionality on board
+    * Create Task Diagram to run the program
+    * Implement task diagram to run motors 
+        * cotask.py should have timing at around 10ms
+        * make sure run() method in controllor class only doesone calc each time
+    * Run the motor with a flywheel
+        * print results and plot step response like before
+        * find the slowest rate at which the controllers preformance is noticably worse
+        * Record the slowest rate at which the performance is not significantly worse than when running the controller at a fast rate
+        * choose a good run rate for the motor control task - it should be a bit faster than the slowest rate which works for a factor of safety
+        * Save copies of the step response plots for the slowest rate at which the response is good and for a rate at which the response isn’t as good.
+    * make two tasks which run two motors under closed-loop control at the same time
+        * write a test program which moves your motors simultaneously through different distances and holds them at the desired positions
+        
 """
 
 import gc
