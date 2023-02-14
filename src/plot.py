@@ -16,10 +16,7 @@ def plotResponse(csv_filename):
        @details                               Plots the response of the test results. Sets x and y axis labels.
                                               Sets the title of the plot. The x and y data start as empty lists and
                                               get appended as data is collected.
-       @param list                            Parses in a list of parameters to hit the low Kp, high Kp, and best performance targets.
-       @param gain                            Parses in the Kp.    
-       @param target_pos                      Parses in the target motor position.
-       @param test_num                        Parses in which test is running.
+       @param csv_filename                    Name of a csv file in the workign directory with the step response data
     '''
     p.title("Theta vs Time")
     p.xlabel("Time, seconds")
